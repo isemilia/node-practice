@@ -1,0 +1,52 @@
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+
+.header a {
+    text-decoration: none;
+    color: black;
+    transition: all .3s;
+}
+
+.header a:hover {
+    color: grey;
+}
+
+.header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+}
+
+.content .post {
+    padding: 0 0 16px;
+    border-bottom: 1px solid grey;
+}
+
+.content form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.content form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin: 16px 0 0;
+    text-align: center;
+}

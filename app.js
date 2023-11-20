@@ -3,6 +3,9 @@ const express = require('express');
 // initialize express 
 const app = express();
 
+// styles
+app.use(express.static(__dirname + '/public'));
+
 // register view engine
 app.set('view engine', 'ejs');
 app.set('views', 'pages');
