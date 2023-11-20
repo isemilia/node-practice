@@ -13,15 +13,20 @@ app.listen(4000, () => {
 });
 
 app.get('/', (req, res) => {
-    res.render('index');
+    const posts = [
+        { title: 'NodeJS', snippet: 'Lorem ipus liber metus' },
+        { title: 'JavaScript', snippet: 'Lorem ipus liber metus' },
+        { title: 'TypeScript', snippet: 'Lorem ipus liber metus' },
+    ]
+    res.render('index', { title: 'Home', posts });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about');
+    res.render('about', { title: 'About' });
 });
 
 app.get('/posts/create', (req, res) => {
-    res.render('create');
+    res.render('create', { title: 'Create a new post' });
 })
 
 
@@ -33,5 +38,5 @@ app.get('/about-us', (req, res) => {
 
 // 404 page
 app.use((req, res) => {
-    res.status(404).render('404');
+    res.status(404).render('404', { title: 'Not found' });
 });

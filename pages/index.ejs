@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>
+        Blog | <%= title %>
+    </title>
 </head>
 
 <body>
@@ -21,6 +23,19 @@
 
     <div class="content">
         <h2>All posts</h2>
+
+        <% if (posts.length> 0) { %>
+            <% posts.forEach((post) => { %>
+                <div class="post">
+                    <h3 class="title"><%= post.title %></h3>
+                    <div class="snippet"><%= post.snippet %></div>
+                </div>
+                <hr>
+            <% }) %>
+        <% } else { %>
+            <h3>There are no posts yet</h3>
+        <% } %>
+
     </div>
 </body>
 
