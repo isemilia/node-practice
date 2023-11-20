@@ -13,12 +13,16 @@ app.listen(4000, () => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile('./pages/home.html', { root: __dirname });
+    res.render('index');
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile('./pages/about.html', { root: __dirname });
+    res.render('about');
 });
+
+app.get('/posts/create', (req, res) => {
+    res.render('create');
+})
 
 
 // redirects
@@ -29,5 +33,5 @@ app.get('/about-us', (req, res) => {
 
 // 404 page
 app.use((req, res) => {
-    res.statusCode(404).sendFile('./pages/404.html', { root: __dirname });
+    res.status(404).render('404');
 });

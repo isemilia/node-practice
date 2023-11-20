@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <nav class="header">
+        <a href="/">
+            <h1>Hello World</h1>
+        </a>
+        <ul>
+            <li><a href="/">Posts</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/posts/create">New post</a></li>
+        </ul>
+    </nav>
+
+    <div class="content create">
+        <h2>Create post</h2>
+        <form>
+            <label>
+                Blog title
+                <input type="text" name="title" id="title" required>
+            </label>
+            <label>
+                Blog snippet
+                <input type="text" name="snippet" id="snippet" required>
+            </label>
+            <label>
+                Blog body
+                <textarea type="text" name="body" id="body" required></textarea>
+            </label>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
