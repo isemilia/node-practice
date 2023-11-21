@@ -1,10 +1,8 @@
 const express = require('express');
+const morgan = require('morgan');
 
 // initialize express 
 const app = express();
-
-// styles
-app.use(express.static(__dirname + '/public'));
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -14,6 +12,12 @@ app.set('views', 'pages');
 app.listen(4000, () => {
     console.log('Listening');
 });
+
+// styles
+app.use(express.static(__dirname + '/public'));
+
+// logger 
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     const posts = [
