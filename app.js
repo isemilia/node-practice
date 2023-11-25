@@ -64,6 +64,15 @@ app.post('/posts', (req, res) => {
         .catch(console.log)
 });
 
+app.get('/posts/:id', (req, res) => {
+    const { id } = req.params;
+    Post.findById(id).
+        then(result => {
+            res.render('single', { title: result.title, post: result })
+        })
+        .catch(console.log);
+})
+
 app.get('/posts/create', (req, res) => {
     res.render('create', { title: 'Create a new post' });
 });
