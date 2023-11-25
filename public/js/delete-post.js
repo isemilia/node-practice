@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 return res.json();
             })
             .then(json => {
-                window.location = json.redirect;
+                window.location.href = json.redirect;
             })
             .catch(console.log);
     });
