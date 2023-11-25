@@ -52,7 +52,10 @@ app.get('/posts', (req, res) => {
         .then(posts => {
             res.render('index', { title: 'Posts', posts });
         })
-        .catch(console.log)
+        .catch((err) => {
+            console.log(err);
+            res.render('error', { title: 'Something went wrong' })
+        });
 });
 
 app.post('/posts', (req, res) => {
@@ -61,7 +64,10 @@ app.post('/posts', (req, res) => {
         .then(result => {
             res.redirect('/posts')
         })
-        .catch(console.log)
+        .catch((err) => {
+            console.log(err);
+            res.render('error', { title: 'Something went wrong' })
+        });
 });
 
 app.get('/posts/create', (req, res) => {
@@ -74,7 +80,10 @@ app.get('/posts/:id', (req, res) => {
         then(result => {
             res.render('single', { title: result.title, post: result })
         })
-        .catch(console.log);
+        .catch((err) => {
+            console.log(err);
+            res.render('error', { title: 'Something went wrong' })
+        });
 });
 
 app.delete('/posts/:id', (req, res) => {
@@ -86,7 +95,10 @@ app.delete('/posts/:id', (req, res) => {
                 redirect: '/posts'
             })
         })
-        .catch(console.log);
+        .catch((err) => {
+            console.log(err);
+            res.render('error', { title: 'Something went wrong' })
+        });
 });
 
 // redirects
