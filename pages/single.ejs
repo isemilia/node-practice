@@ -7,19 +7,22 @@
         <%- include('./partials/nav.ejs') %>
 
             <div class="content">
-                <h2>
-                    <a href="/posts/<%= post._id %>">
-                        <%= post.title %>
-                    </a>
-                </h2>
+                <div class="single">
+                    <div class="single-head">
+                        <h2>
+                            <a href="/posts/<%= post._id %>">
+                                <%= post.title %>
+                            </a>
+                        </h2>
 
-                <div class="body">
-                    <%= post.body %>
+                        <button type="submit" id="delete-post" data-id="<%= post._id %>">Delete post</button>
+                    </div>
+
+                    <div class="body">
+                        <%= post.body %>
+                    </div>
                 </div>
-
             </div>
-
-            <button type="submit" id="delete-post" data-id="<%= post._id %>">Delete post</button>
 
             <%- include('./partials/footer.ejs') %>
 

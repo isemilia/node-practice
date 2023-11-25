@@ -1,7 +1,7 @@
 body {
     max-width: 800px;
     margin: 0 auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header {
@@ -14,7 +14,7 @@ body {
 .header a {
     text-decoration: none;
     color: black;
-    transition: all .3s;
+    transition: all 0.3s;
 }
 
 .header a:hover {
@@ -44,6 +44,12 @@ body {
 .content form label {
     display: flex;
     flex-direction: column;
+}
+
+.single-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .footer {
