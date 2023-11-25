@@ -3,29 +3,29 @@
 
 <%- include('./partials/head.ejs') %>
 
-<body>
-    <%- include('./partials/nav.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
 
-    <div class="content create">
-        <h2>Create post</h2>
-        <form>
-            <label>
-                Blog title
-                <input type="text" name="title" id="title" required>
-            </label>
-            <label>
-                Blog snippet
-                <input type="text" name="snippet" id="snippet" required>
-            </label>
-            <label>
-                Blog body
-                <textarea type="text" name="body" id="body" required></textarea>
-            </label>
-            <button>Submit</button>
-        </form>
-    </div>
+            <div class="content create">
+                <h2>Create post</h2>
+                <form action="/posts" method="POST">
+                    <label>
+                        Post title
+                        <input type="text" name="title" id="title" required>
+                    </label>
+                    <label>
+                        Post snippet
+                        <input type="text" name="snippet" id="snippet" required>
+                    </label>
+                    <label>
+                        Post body
+                        <textarea type="text" name="body" id="body" required></textarea>
+                    </label>
+                    <button>Submit</button>
+                </form>
+            </div>
 
-    <%- include('./partials/footer.ejs') %>
-</body>
+            <%- include('./partials/footer.ejs') %>
+    </body>
 
 </html>

@@ -9,7 +9,7 @@ const Post = require('./models/post')
 dotenv.config();
 
 // initialize express 
-const app = express();
+const app = express({ extended: true });
 
 // connect to mongoDB
 mongoose.connect(process.env.DB_URI)
@@ -29,8 +29,9 @@ mongoose.connect(process.env.DB_URI)
 app.set('view engine', 'ejs');
 app.set('views', 'pages');
 
-// styles
+// midldeware
 app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({ extended: true }));
 
 // logger 
 app.use(morgan('dev'));
@@ -50,6 +51,15 @@ app.get('/posts', (req, res) => {
     Post.find().sort({ createdAt: -1 })
         .then(posts => {
             res.render('index', { title: 'Posts', posts });
+        })
+        .catch(console.log)
+});
+
+app.post('/posts', (req, res) => {
+    const post = new Post(req.body);
+    post.save()
+        .then(result => {
+            res.redirect('/posts')
         })
         .catch(console.log)
 });
