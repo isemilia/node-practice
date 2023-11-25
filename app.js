@@ -64,6 +64,10 @@ app.post('/posts', (req, res) => {
         .catch(console.log)
 });
 
+app.get('/posts/create', (req, res) => {
+    res.render('create', { title: 'Create a new post' });
+});
+
 app.get('/posts/:id', (req, res) => {
     const { id } = req.params;
     Post.findById(id).
@@ -71,10 +75,18 @@ app.get('/posts/:id', (req, res) => {
             res.render('single', { title: result.title, post: result })
         })
         .catch(console.log);
-})
+});
 
-app.get('/posts/create', (req, res) => {
-    res.render('create', { title: 'Create a new post' });
+app.delete('/posts/:id', (req, res) => {
+    const { id } = req.params;
+    Post.findByIdAndDelete(id).
+        then(result => {
+            console.log(result);
+            res.json({
+                redirect: '/posts'
+            })
+        })
+        .catch(console.log);
 });
 
 // redirects

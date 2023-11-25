@@ -13,15 +13,17 @@
                     </a>
                 </h2>
 
-                <div class="post">
-                    <div class="body">
-                        <%= post.body %>
-                    </div>
+                <div class="body">
+                    <%= post.body %>
                 </div>
 
             </div>
 
+            <button type="submit" id="delete-post" data-id="<%= post._id %>">Delete post</button>
+
             <%- include('./partials/footer.ejs') %>
+
+                <script src="/js/delete-post.js"></script>
     </body>
 
 </html>
