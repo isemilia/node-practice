@@ -3,9 +3,9 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
-const Post = require('./models/post')
+const postRoutes = require('./routes/post-routes');
 
-// set uup .env
+// set up .env
 dotenv.config();
 
 // initialize express 
@@ -23,7 +23,7 @@ mongoose.connect(process.env.DB_URI)
     })
     .catch((err) => {
         console.log(err);
-    })
+    });
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -47,59 +47,7 @@ app.get('/about', (req, res) => {
 
 
 // post routes
-app.get('/posts', (req, res) => {
-    Post.find().sort({ createdAt: -1 })
-        .then(posts => {
-            res.render('index', { title: 'Posts', posts });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.render('error', { title: 'Something went wrong' })
-        });
-});
-
-app.post('/posts', (req, res) => {
-    const post = new Post(req.body);
-    post.save()
-        .then(result => {
-            res.redirect('/posts')
-        })
-        .catch((err) => {
-            console.log(err);
-            res.render('error', { title: 'Something went wrong' })
-        });
-});
-
-app.get('/posts/create', (req, res) => {
-    res.render('create', { title: 'Create a new post' });
-});
-
-app.get('/posts/:id', (req, res) => {
-    const { id } = req.params;
-    Post.findById(id).
-        then(result => {
-            res.render('single', { title: result.title, post: result })
-        })
-        .catch((err) => {
-            console.log(err);
-            res.render('error', { title: 'Something went wrong' })
-        });
-});
-
-app.delete('/posts/:id', (req, res) => {
-    const { id } = req.params;
-    Post.findByIdAndDelete(id).
-        then(result => {
-            console.log(result);
-            res.json({
-                redirect: '/posts'
-            })
-        })
-        .catch((err) => {
-            console.log(err);
-            res.render('error', { title: 'Something went wrong' })
-        });
-});
+app.use('/posts', postRoutes);
 
 // redirects
 app.get('/about-us', (req, res) => {
